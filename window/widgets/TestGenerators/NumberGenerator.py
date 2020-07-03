@@ -1,4 +1,5 @@
 import random
+#number genrator for numtesr
 
 
 

@@ -1,11 +1,12 @@
 
 from  PyQt5.QtWidgets import (QWidget,QApplication, QLabel,
                                 QPushButton, QProgressBar,QGridLayout,QTextEdit)
-from PyQt5.QtGui import QIcon
 
-from NumberGenerator import NumGen
+from widgets.TestGenerators.NumberGenerator import NumGen
+
 import time
-class window(QWidget):
+
+class numtest(QWidget):
 
 
     def __init__(self):
@@ -14,16 +15,7 @@ class window(QWidget):
 
     def initUI(self):
         #main ui function to make the ui 
-        _width = 300
-        _height = 500
-        _title = "MEM TEST !!"
         
-        self.setGeometry(300, 300, _width,_height)
-        self.setWindowTitle(_title)
-        self.setWindowOpacity(0.9)
-        icon = QIcon("window/icon.png")
-        self.setWindowIcon(icon)
-
         self.ScoreDisplay = QLabel()
         self.NumberDisplay  = QLabel()
         self.timer = QProgressBar()
@@ -34,8 +26,8 @@ class window(QWidget):
         self.grid.addWidget(self.ScoreDisplay,0,0)
         self.grid.addWidget(self.NumberDisplay,1,0)
         self.grid.addWidget(self.timer,2,0)
-        self.grid.addWidget(self.AnswerBox,3,0,3,0)
-        self.grid.addWidget(self.SubmitButton,6,0)
+        self.grid.addWidget(self.AnswerBox,3,0,2,0)
+        self.grid.addWidget(self.SubmitButton,5,0)
         self.grid.setSpacing(10)
         self.setLayout(self.grid)
         s = '''
@@ -50,7 +42,6 @@ class window(QWidget):
             border-width:2px;
             border-color:blue;
             font-size:20px;
-            background-color:white;
 
         }
         QPushButton {
@@ -134,7 +125,7 @@ class window(QWidget):
 if __name__ == "__main__":
     import sys
     app = QApplication(sys.argv)
-    win  = window()
+    win  = numtest()
     win.show()
     sys.exit(app.exec_())   
 
