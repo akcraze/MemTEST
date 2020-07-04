@@ -1,12 +1,11 @@
 
-from  PyQt5.QtWidgets import (QWidget,QApplication, QLabel,
-                                QPushButton, QProgressBar,QGridLayout,QTextEdit)
-
+from PyQt5 import QtWidgets
 from widgets.TestGenerators.NumberGenerator import NumGen
 
 import time
 
-class numtest(QWidget):
+
+class numtest(QtWidgets.QWidget):
 
 
     def __init__(self):
@@ -16,13 +15,13 @@ class numtest(QWidget):
     def initUI(self):
         #main ui function to make the ui 
         
-        self.ScoreDisplay = QLabel()
-        self.NumberDisplay  = QLabel()
-        self.timer = QProgressBar()
-        self.SubmitButton =  QPushButton()
-        self.AnswerBox =  QTextEdit()
+        self.ScoreDisplay = QtWidgets.QLabel()
+        self.NumberDisplay  = QtWidgets.QLabel()
+        self.timer = QtWidgets.QProgressBar()
+        self.SubmitButton =  QtWidgets.QPushButton()
+        self.AnswerBox =  QtWidgets.QTextEdit()
         
-        self.grid = QGridLayout(self)
+        self.grid = QtWidgets.QGridLayout(self)
         self.grid.addWidget(self.ScoreDisplay,0,0)
         self.grid.addWidget(self.NumberDisplay,1,0)
         self.grid.addWidget(self.timer,2,0)
@@ -124,7 +123,7 @@ class numtest(QWidget):
 
 if __name__ == "__main__":
     import sys
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     win  = numtest()
     win.show()
     sys.exit(app.exec_())   
