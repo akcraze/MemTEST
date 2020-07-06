@@ -1,7 +1,8 @@
 
 from PyQt5 import QtWidgets
 from widgets.TestGenerators.NumberGenerator import NumGen
-
+from PyQt5 import QtGui
+from PyQt5 import QtCore
 import time
 
 
@@ -17,9 +18,16 @@ class numtest(QtWidgets.QWidget):
         
         self.ScoreDisplay = QtWidgets.QLabel()
         self.NumberDisplay  = QtWidgets.QLabel()
-        self.timer = QtWidgets.QProgressBar()
         self.SubmitButton =  QtWidgets.QPushButton()
         self.AnswerBox =  QtWidgets.QTextEdit()
+       
+        self.timer = QtWidgets.QProgressBar()
+        self.prog_bar_color = QtGui.QPalette(self.palette())
+        self.prog_bar_color.setColor(QtGui.QPalette.Highlight, QtCore.Qt.green)
+        self.timer.setPalette(self.prog_bar_color)
+    
+        
+
         
         self.grid = QtWidgets.QGridLayout(self)
         self.grid.addWidget(self.ScoreDisplay,0,0)
@@ -106,9 +114,19 @@ class numtest(QtWidgets.QWidget):
 #FIXME this function makes the whole program to freeze so need to work around it  
     def Time(self):
         #this function makes the progress bar fill in 10 seconds so the user can see the time left
+        #and changes the color of statusbar depending upon the time left
         for i in range(1,101):
             time.sleep(0.1)
             self.timer.setValue(i)
+            if i == 20: 
+                self.prog_bar_color.setColor(QtGui.QPalette.Highlight, QtCore.Qt.green)
+            elif i == 60:
+                self.prog_bar_color.setColor(QtGui.QPalette.Highlight, QtCore.Qt.yellow)
+            elif i == 90:
+                self.prog_bar_color.setColor(QtGui.QPalette.Highlight, QtCore.Qt.red)
+                           
+            self.timer.setPalette(self.prog_bar_color)
+
         self.NumberDisplay.setText("Enter the number below")
     def num(self):
         #this function generates the random number for the user to remember
