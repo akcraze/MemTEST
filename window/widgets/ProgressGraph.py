@@ -12,9 +12,9 @@ class Plotter(FigureCanvasQTAgg):
         
         self.axes = fig.add_subplot(111)
 # code for main window
-graph = Plotter()
-score = data_pull()
-graph.axes.plot(score)
+# graph = Plotter()
+# score = data_pull()
+# graph.axes.plot(score)
 
 if __name__ == "__main__":
     import sys
