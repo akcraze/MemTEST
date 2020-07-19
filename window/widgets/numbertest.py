@@ -73,6 +73,7 @@ class numtest(QtWidgets.QWidget):
     
         self.ScoreDisplay.setText("SCORE:0")
         self.score = 0
+        self.diffculty = 4
         
         self.timer.setValue(0)
         
@@ -103,6 +104,8 @@ class numtest(QtWidgets.QWidget):
         if answer  == str(self.number):
             self.TextToScore()
             self.num()
+            self.diffculty += 1
+        
             self.Time()
             #this used to clear previous input from the user
             self.AnswerBox.setText("")
@@ -130,7 +133,7 @@ class numtest(QtWidgets.QWidget):
         self.NumberDisplay.setText("Enter the number below")
     def num(self):
         #this function generates the random number for the user to remember
-            self.number = NumGen()
+            self.number = NumGen(self.diffculty)
             self.NumberDisplay.setText(str(self.number))
     def TextToScore(self):
         #this function adds +1 to the total score of user and displays the text
