@@ -90,10 +90,13 @@ class numtest(QtWidgets.QWidget):
     def submit(self):
         #this conditional statement is used to change the text of the pushbutton
         if self.start == True:
+            self.score = 0
+            self.TextToScore()
             self.SubmitButton.setText("SUBMIT")
             self.AnswerBox.setText("")#this is used to clear the final result text from the last game 
             self.num()
             self.Time()
+            self.diffculty = 4
             self.start = False
         else:
             self.compare()
@@ -112,6 +115,7 @@ class numtest(QtWidgets.QWidget):
         else:
             self.AnswerBox.setText(f"incorrect answer!! \n the correct answer is {self.number} and your answer was {answer}")
             self.SubmitButton.setText("RESTART")
+            self.diffculty = 4
             self.start = True
             
 #FIXME this function makes the whole program to freeze so need to work around it  
